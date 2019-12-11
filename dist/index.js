@@ -146,7 +146,7 @@ class ServerlessCloudfrontDistributionCertificate {
                                 zones.push(zone);
                             });
                             if (data.IsTruncated) {
-                                return getZones(data.Marker);
+                                return getZones(data.NextMarker);
                             }
                             success(zones);
                         });
