@@ -131,13 +131,13 @@ class ServerlessCloudfrontDistributionCertificate {
         return __awaiter(this, void 0, void 0, function* () {
             return yield new Promise((success, failure) => {
                 const zones = [];
-                function getZones(marker) {
+                const getZones = (marker) => {
                     this.route53.listHostedZones({
                         Marker: marker === "" ? undefined : marker,
-                        MaxItems: 100,
+                        MaxItems: "100",
                     }, (err, data) => {
                         if (err) {
-                            return failure(new Error(err));
+                            return failure(err);
                         }
                         data.HostedZones.forEach((zone) => {
                             zones.push(zone);
@@ -147,7 +147,7 @@ class ServerlessCloudfrontDistributionCertificate {
                         }
                         success(zones);
                     });
-                }
+                };
                 getZones("");
             });
         });
